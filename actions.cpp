@@ -502,11 +502,19 @@ int readActions(ifstream &ff, 	ActionList &block, string aStop, World *wd, Event
 					getline(ff, str2);
 					if (str2[0] != '@') {
 						split2(str2, ',', talk->Name[talk->sentNum], talk->Speach[talk->sentNum]);
-
-						if (talk->Speach[talk->sentNum] != "" && talk->Speach[talk->sentNum][0] == '%') {
-
-							talk->Speach[talk->sentNum] = talk->world->varList.getValue(talk->Speach[talk->sentNum]);
-							//cout << "talk" << talk->Speach[talk->sentNum] << endl;
+						string speach = talk->Speach[talk->sentNum];
+						size_t start = speach.find("<%");
+						if (talk->Speach[talk->sentNum] != "" && start != string::npos) {
+							while (start != string::npos) {
+								size_t end = speach.find(">", start);
+								if (end != string::npos) {
+									string varName = speach.substr(start + 2, end - start - 2);
+									string varValue = talk->world->varList.getValue(varName);
+									speach.replace(start, end - start + 1, varValue);
+								}
+								start = speach.find("<%", start + 1);
+							}
+							talk->Speach[talk->sentNum] = speach;
 						}
 						talk->sentNum++;
 					} else {
