@@ -93,6 +93,34 @@ http://172.18.165.135/go.html 可以是由任何方式的get请求地址。可�
 
 ===============================================
 
+###关于curl模块引入：
+
+因为用到了网络请求，所以集成了curl引擎。需要你自己下载curl模块源码，并加入到项目中。
+
+以DEVC++安装目录为 C:\Program Files (x86)\Dev-Cpp 为例
+
+1、先去下载curl模块。具体地址：https://curl.se/download.html 根据你的系统决定下载哪个包。这里开发环境时WIN1164位。所以选的 https://curl.se/windows/
+
+https://curl.se/windows/dl-8.5.0_6/curl-8.5.0_6-win64-mingw.zip
+
+curl for 64-bit
+
+Size: 7.4 MB
+
+sha256: 7ed01e22cffb25e3b9761cacbf5d6d151015c3dd0fa8e2f13ffb98c7087a903f
+
+解压后将解压目录中的 bin include lib 三个目录复制到 C:\Program Files (x86)\Dev-Cpp\MinGW64\x86_64-w64-mingw32 中
+
+然后在devc++ 中 选 【项目】--->【项目属性】--->【参数】--->【连接器】将以下内容复制粘贴进去，点击确定保存。
+
+```shell
+-L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib/libcurl.a" -lcurl
+```
+
+==================================================
+
+###实际效果演示
+
 ![游戏实际效果演示](微信图片_20240123183312.png)
 ![游戏实际效果演示](微信图片_20240123183332.png)
 ![游戏实际效果演示](微信图片_20240123183346.png)
