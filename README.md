@@ -1,8 +1,8 @@
-基于 [Console-Rpg-Engine] (https://github.com/xiaorang/Console-Rpg-Engine) 改造
+#基于 [Console-Rpg-Engine](https://github.com/xiaorang/Console-Rpg-Engine) 改造,非常感谢xiaorang的开源。
 
 
 
-# 说明
+## 说明
 
 用控制台做游戏的缺点是界面效果的表现力受限，好处是正因为表现力受限，可以把更多的注意力放在逻辑本身。
 
